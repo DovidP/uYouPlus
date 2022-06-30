@@ -22,6 +22,7 @@ extern BOOL hideAutoplaySwitch();
 extern BOOL castConfirm();
 extern BOOL ytMiniPlayer();
 extern BOOL hidePreviousAndNextButton();
+extern BOOL ytTrueTime();
 
 // Settings
 %hook YTAppSettingsPresentationData
@@ -149,7 +150,17 @@ extern BOOL hidePreviousAndNextButton();
         return YES;
     };
 
-    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[autoFull, castConfirm, ytMiniPlayer, hideAutoplaySwitch, hideCC, hideHUD, hidePreviousAndNextButton, hideHoverCard, bigYTMiniPlayer, oledDarkMode, oledKeyBoard, reExplore]];
+    // YTTrueTime - https://github.com/DovidP/YTTrueTime
+    YTSettingsSectionItem *ytTrueTime = [[%c(YTSettingsSectionItem) alloc] initWithTitle:LOC(@"TRUE_TIME") titleDescription:LOC(@"TRUE_TIME_DESC")];
+    ytTrueTime.hasSwitch = YES;
+    ytTrueTime.switchVisible = YES;
+    ytTrueTime.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"ytTrueTime_enabled"];
+    ytTrueTime.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
+        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"ytTrueTime_enabled"];
+        return YES;
+    };
+
+    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[autoFull, castConfirm, ytMiniPlayer, hideAutoplaySwitch, hideCC, hideHUD, hidePreviousAndNextButton, hideHoverCard, bigYTMiniPlayer, oledDarkMode, oledKeyBoard, reExplore, ytTrueTime]];
     [delegate setSectionItems:sectionItems forCategory:uYouPlusSection title:@"uYouPlus" titleDescription:nil headerHidden:NO];
 }
 

@@ -82,3 +82,14 @@
 
 @interface UIPredictionViewController : UIViewController
 @end
+
+// YTTrueTime - https://github.com/DovidP/YTTrueTime
+@interface YTPlayerViewController (YTTT)
+- (float)currentPlaybackRateForVarispeedSwitchController:(id)arg1;
+@end
+
+@interface UIView ()
+@property(nonatomic, readwrite) UIView *overlayView;
+@property(nonatomic, readwrite) UIView *playerBar;
+@property(nonatomic, readwrite) UILabel *durationLabel;
+@end
