@@ -37,7 +37,7 @@
 "OLED_KEYBOARD_DESC" = "Might not working correctly in some cases. App restart is required.";
 
 "TRUE_TIME" = "Show True Timestamp (YTTrueTime)";
-"TRUE_TIME_DESC" = "Adjust Progress/Duration based on the Playback Rate. App restart is required";
+"TRUE_TIME_DESC" = "Adjust Progress/Duration based on the Playback Rate. App restart is required.";
 
 // YTCastConfirm
 "CASTING" = "Castings";
